@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 type AccordionpProps = {
   children: React.ReactNode;
@@ -26,13 +26,14 @@ export default function Accordion({
             e.preventDefault();
             setAccordionOpen((prevState) => !prevState);
           }}
+          type="button"
           aria-expanded={accordionOpen}
           aria-controls={`accordion-text-${id}`}
         >
           <span>{title}</span>
           <span className="ml-8 flex size-5 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
             <svg
-              className={`origin-center fill-gray-400 transition duration-200 ease-out${accordionOpen && "!rotate-180"}`}
+              className={`origin-center fill-gray-400 transition duration-200 ease-out${accordionOpen && '!rotate-180'}`}
               xmlns="http://www.w3.org/2000/svg"
               width={10}
               height={6}
@@ -50,7 +51,7 @@ export default function Accordion({
         id={`accordion-text-${id}`}
         role="region"
         aria-labelledby={`accordion-title-${id}`}
-        className={`grid overflow-hidden text-sm text-gray-600 transition-all duration-300 ease-in-out ${accordionOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+        className={`grid overflow-hidden text-sm text-gray-600 transition-all duration-300 ease-in-out ${accordionOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}
       >
         <div className="overflow-hidden">
           <p className="px-4 pb-3">{children}</p>
