@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import './globals.css';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://chat.vercel.ai'),
+  metadataBase: new URL('https://ofa.ai'),
   title: 'OFA Chat',
   description: 'One for All chatbot.',
 };
