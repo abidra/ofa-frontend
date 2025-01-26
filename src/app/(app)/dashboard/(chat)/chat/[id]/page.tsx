@@ -3,9 +3,12 @@ import { notFound } from 'next/navigation';
 
 import { auth } from '@/app/(app)/(auth)/auth';
 import { Chat } from '@/components/chat';
-import { DEFAULT_MODEL_NAME, models } from '@/lib/ai/models';
-import { getChatById, getMessagesByChatId } from '@/lib/db/queries';
-import { convertToUIMessages } from '@/lib/utils';
+import { DEFAULT_MODEL_NAME, models } from '../../../../../../lib/ai/models';
+import {
+  getChatById,
+  getMessagesByChatId,
+} from '../../../../../../../lib/db/queries';
+import { convertToUIMessages } from '../../../../../../lib/utils';
 import { DataStreamHandler } from '@/components/data-stream-handler';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {

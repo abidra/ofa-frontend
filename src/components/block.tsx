@@ -17,8 +17,8 @@ import {
 import useSWR, { useSWRConfig } from 'swr';
 import { useDebounceCallback, useWindowSize } from 'usehooks-ts';
 
-import type { Document, Suggestion, Vote } from '@/lib/db/schema';
-import { cn, fetcher } from '@/lib/utils';
+import type { Document, Suggestion, Vote } from '../../lib/db/schema';
+import { cn, fetcher } from '../lib/utils';
 
 import { DiffView } from './diffview';
 import { DocumentSkeleton } from './document-skeleton';
@@ -92,16 +92,16 @@ function PureBlock({
   votes: Array<Vote> | undefined;
   append: (
     message: Message | CreateMessage,
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => Promise<string | null | undefined>;
   handleSubmit: (
     event?: {
       preventDefault?: () => void;
     },
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => void;
   reload: (
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => Promise<string | null | undefined>;
   isReadonly: boolean;
 }) {
@@ -115,7 +115,7 @@ function PureBlock({
     block.documentId !== 'init' && block.status !== 'streaming'
       ? `/api/document?id=${block.documentId}`
       : null,
-    fetcher,
+    fetcher
   );
 
   const { data: suggestions } = useSWR<Array<Suggestion>>(
@@ -125,14 +125,14 @@ function PureBlock({
     fetcher,
     {
       dedupingInterval: 5000,
-    },
+    }
   );
 
   const [mode, setMode] = useState<'edit' | 'diff'>('edit');
   const [document, setDocument] = useState<Document | null>(null);
   const [currentVersionIndex, setCurrentVersionIndex] = useState(-1);
   const [consoleOutputs, setConsoleOutputs] = useState<Array<ConsoleOutput>>(
-    [],
+    []
   );
 
   const { open: isSidebarOpen } = useSidebar();
@@ -197,15 +197,15 @@ function PureBlock({
           }
           return currentDocuments;
         },
-        { revalidate: false },
+        { revalidate: false }
       );
     },
-    [block, mutate],
+    [block, mutate]
   );
 
   const debouncedHandleContentChange = useDebounceCallback(
     handleContentChange,
-    2000,
+    2000
   );
 
   const saveContent = useCallback(
@@ -220,7 +220,7 @@ function PureBlock({
         }
       }
     },
-    [document, debouncedHandleContentChange, handleContentChange],
+    [document, debouncedHandleContentChange, handleContentChange]
   );
 
   function getDocumentContentById(index: number) {
@@ -442,7 +442,7 @@ function PureBlock({
                         new Date(),
                         {
                           addSuffix: true,
-                        },
+                        }
                       )}`}
                     </div>
                   ) : (
@@ -467,7 +467,7 @@ function PureBlock({
                 {
                   'py-2 px-2': block.kind === 'code',
                   'py-8 md:p-20 px-4': block.kind === 'text',
-                },
+                }
               )}
             >
               <div
@@ -508,7 +508,7 @@ function PureBlock({
                   ) : (
                     <DiffView
                       oldContent={getDocumentContentById(
-                        currentVersionIndex - 1,
+                        currentVersionIndex - 1
                       )}
                       newContent={getDocumentContentById(currentVersionIndex)}
                     />

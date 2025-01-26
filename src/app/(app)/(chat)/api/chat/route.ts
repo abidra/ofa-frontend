@@ -7,26 +7,26 @@ import {
 } from 'ai';
 
 import { auth } from '@/app/(app)/(auth)/auth';
-import { customModel } from '@/lib/ai';
-import { models } from '@/lib/ai/models';
-import { systemPrompt } from '@/lib/ai/prompts';
+import { customModel } from '../../../../../lib/ai';
+import { models } from '../../../../../lib/ai/models';
+import { systemPrompt } from '../../../../../lib/ai/prompts';
 import {
   deleteChatById,
   getChatById,
   saveChat,
   saveMessages,
-} from '@/lib/db/queries';
+} from '../../../../../../lib/db/queries';
 import {
   generateUUID,
   getMostRecentUserMessage,
   sanitizeResponseMessages,
-} from '@/lib/utils';
+} from '../../../../../lib/utils';
 
 import { generateTitleFromUserMessage } from '../../../dashboard/(chat)/actions';
-import { createDocument } from '@/lib/ai/tools/create-document';
-import { updateDocument } from '@/lib/ai/tools/update-document';
-import { requestSuggestions } from '@/lib/ai/tools/request-suggestions';
-import { getWeather } from '@/lib/ai/tools/get-weather';
+import { createDocument } from '../../../../../lib/ai/tools/create-document';
+import { updateDocument } from '../../../../../lib/ai/tools/update-document';
+import { requestSuggestions } from '../../../../../lib/ai/tools/request-suggestions';
+import { getWeather } from '../../../../../lib/ai/tools/get-weather';
 
 export const maxDuration = 60;
 

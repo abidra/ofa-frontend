@@ -6,10 +6,8 @@ import { useState } from 'react';
 import { useSWRConfig } from 'swr';
 import { useWindowSize } from 'usehooks-ts';
 
-import type { Document } from '@/lib/db/schema';
-import { getDocumentTimestampByIndex } from '@/lib/utils';
-
-import type { UIBlock } from './block';
+import type { Document } from '../../lib/db/schema';
+import { getDocumentTimestampByIndex } from '../lib/utils';
 import { LoaderIcon } from './icons';
 import { Button } from './ui/button';
 import { useBlock } from '@/hooks/use-block';
@@ -63,7 +61,7 @@ export const VersionFooter = ({
                 body: JSON.stringify({
                   timestamp: getDocumentTimestampByIndex(
                     documents,
-                    currentVersionIndex,
+                    currentVersionIndex
                   ),
                 }),
               }),
@@ -76,14 +74,14 @@ export const VersionFooter = ({
                           new Date(
                             getDocumentTimestampByIndex(
                               documents,
-                              currentVersionIndex,
-                            ),
-                          ),
-                        ),
+                              currentVersionIndex
+                            )
+                          )
+                        )
                       ),
                     ]
                   : [],
-              },
+              }
             );
           }}
         >

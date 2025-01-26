@@ -1,10 +1,10 @@
-import { cn } from '@/lib/utils';
+import { cn } from '../lib/utils';
 import { ClockRewind, CopyIcon, RedoIcon, UndoIcon } from './icons';
 import { Button } from './ui/button';
 import { Tooltip, TooltipContent, TooltipTrigger } from './ui/tooltip';
 import { toast } from 'sonner';
-import { ConsoleOutput, UIBlock } from './block';
-import { Dispatch, memo, SetStateAction } from 'react';
+import type { ConsoleOutput, UIBlock } from './block';
+import { type Dispatch, memo, type SetStateAction } from 'react';
 import { RunCodeButton } from './run-code-button';
 import { useMultimodalCopyToClipboard } from '@/hooks/use-multimodal-copy-to-clipboard';
 
@@ -43,7 +43,7 @@ function PureBlockActions({
                 'p-2 h-fit !pointer-events-auto dark:hover:bg-zinc-700',
                 {
                   'bg-muted': mode === 'diff',
-                },
+                }
               )}
               onClick={() => {
                 handleVersionChange('toggle');

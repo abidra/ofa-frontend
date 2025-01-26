@@ -1,4 +1,4 @@
-import { generateUUID } from '@/lib/utils';
+import { generateUUID } from '../lib/utils';
 import {
   type Dispatch,
   type SetStateAction,
@@ -70,7 +70,7 @@ export function PureRunCodeButton({
 
   const codeContent = useBlockSelector((state) => state.content);
   const isBlockStreaming = useBlockSelector(
-    (state) => state.status === 'streaming',
+    (state) => state.status === 'streaming'
   );
 
   const loadAndRunPython = useCallback(async () => {
@@ -129,12 +129,12 @@ export function PureRunCodeButton({
         for (const handler of requiredHandlers) {
           if (OUTPUT_HANDLERS[handler as keyof typeof OUTPUT_HANDLERS]) {
             await currentPyodideInstance.runPythonAsync(
-              OUTPUT_HANDLERS[handler as keyof typeof OUTPUT_HANDLERS],
+              OUTPUT_HANDLERS[handler as keyof typeof OUTPUT_HANDLERS]
             );
 
             if (handler === 'matplotlib') {
               await currentPyodideInstance.runPythonAsync(
-                'setup_matplotlib_output()',
+                'setup_matplotlib_output()'
               );
             }
           }

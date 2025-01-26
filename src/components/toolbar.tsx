@@ -24,7 +24,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
-import { sanitizeUIMessages } from '@/lib/utils';
+import { sanitizeUIMessages } from '../lib/utils';
 
 import {
   ArrowUpIcon,
@@ -32,11 +32,10 @@ import {
   LogsIcon,
   MessageIcon,
   PenIcon,
-  SparklesIcon,
   StopIcon,
   SummarizeIcon,
 } from './icons';
-import { BlockKind } from './block';
+import type { BlockKind } from './block';
 
 type ToolProps = {
   type:
@@ -55,7 +54,7 @@ type ToolProps = {
   isAnimating: boolean;
   append: (
     message: Message | CreateMessage,
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => Promise<string | null | undefined>;
 };
 
@@ -183,7 +182,7 @@ const ReadingLevelSelector = ({
   isAnimating: boolean;
   append: (
     message: Message | CreateMessage,
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => Promise<string | null | undefined>;
 }) => {
   const LEVELS = [
@@ -236,7 +235,7 @@ const ReadingLevelSelector = ({
                 {
                   'bg-primary text-primary-foreground': currentLevel !== 2,
                   'bg-background text-foreground': currentLevel === 2,
-                },
+                }
               )}
               style={{ y }}
               drag="y"
@@ -343,7 +342,7 @@ export const Tools = ({
   setSelectedTool: Dispatch<SetStateAction<string | null>>;
   append: (
     message: Message | CreateMessage,
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => Promise<string | null | undefined>;
   isAnimating: boolean;
   setIsToolbarVisible: Dispatch<SetStateAction<boolean>>;
@@ -403,7 +402,7 @@ const PureToolbar = ({
   isLoading: boolean;
   append: (
     message: Message | CreateMessage,
-    chatRequestOptions?: ChatRequestOptions,
+    chatRequestOptions?: ChatRequestOptions
   ) => Promise<string | null | undefined>;
   stop: () => void;
   setMessages: Dispatch<SetStateAction<Message[]>>;

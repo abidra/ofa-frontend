@@ -2,16 +2,16 @@
 
 import {
   memo,
-  MouseEvent,
+  type MouseEvent,
   useCallback,
   useEffect,
   useMemo,
   useRef,
 } from 'react';
-import { BlockKind, UIBlock } from './block';
+import type { BlockKind, UIBlock } from './block';
 import { FileIcon, FullscreenIcon, ImageIcon, LoaderIcon } from './icons';
-import { cn, fetcher } from '@/lib/utils';
-import { Document } from '@/lib/db/schema';
+import { cn, fetcher } from '../lib/utils';
+import type { Document } from '../../lib/db/schema';
 import { InlineDocumentSkeleton } from './document-skeleton';
 import useSWR from 'swr';
 import { Editor } from './editor';
@@ -163,10 +163,10 @@ const PureHitboxLayer = ({
                 width: boundingBox.width,
                 height: boundingBox.height,
               },
-            },
+            }
       );
     },
-    [setBlock, result],
+    [setBlock, result]
   );
 
   return (
@@ -234,7 +234,7 @@ const DocumentContent = ({ document }: { document: Document }) => {
     {
       'p-4 sm:px-14 sm:py-16': document.kind === 'text',
       'p-0': document.kind === 'code',
-    },
+    }
   );
 
   const commonProps = {

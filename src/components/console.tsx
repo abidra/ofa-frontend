@@ -1,15 +1,15 @@
 import { TerminalWindowIcon, LoaderIcon, CrossSmallIcon } from './icons';
 import { Button } from './ui/button';
 import {
-  Dispatch,
-  SetStateAction,
+  type Dispatch,
+  type SetStateAction,
   useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
-import { ConsoleOutput } from './block';
-import { cn } from '@/lib/utils';
+import type { ConsoleOutput } from './block';
+import { cn } from '../lib/utils';
 import { useBlockSelector } from '@/hooks/use-block';
 
 interface ConsoleProps {
@@ -44,7 +44,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
         }
       }
     },
-    [isResizing],
+    [isResizing]
   );
 
   useEffect(() => {
@@ -81,7 +81,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
           'fixed flex flex-col bottom-0 dark:bg-zinc-900 bg-zinc-50 w-full border-t z-40 overflow-y-scroll overflow-x-hidden dark:border-zinc-700 border-zinc-200',
           {
             'select-none': isResizing,
-          },
+          }
         )}
         style={{ height }}
       >
@@ -121,7 +121,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
                 [{index + 1}]
               </div>
               {['in_progress', 'loading_packages'].includes(
-                consoleOutput.status,
+                consoleOutput.status
               ) ? (
                 <div className="flex flex-row gap-2">
                   <div className="animate-spin size-fit self-center mb-auto mt-0.5">
@@ -132,7 +132,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
                       ? 'Initializing...'
                       : consoleOutput.status === 'loading_packages'
                         ? consoleOutput.contents.map((content) =>
-                            content.type === 'text' ? content.value : null,
+                            content.type === 'text' ? content.value : null
                           )
                         : null}
                   </div>
@@ -155,7 +155,7 @@ export function Console({ consoleOutputs, setConsoleOutputs }: ConsoleProps) {
                       >
                         {content.value}
                       </div>
-                    ),
+                    )
                   )}
                 </div>
               )}

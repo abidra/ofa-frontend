@@ -1,5 +1,8 @@
 import { auth } from '@/app/(app)/(auth)/auth';
-import { getVotesByChatId, voteMessage } from '@/lib/db/queries';
+import {
+  getVotesByChatId,
+  voteMessage,
+} from '../../../../../../lib/db/queries';
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

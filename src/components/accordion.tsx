@@ -30,9 +30,9 @@ export default function Accordion({
           aria-controls={`accordion-text-${id}`}
         >
           <span>{title}</span>
-          <span className="ml-8 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
+          <span className="ml-8 flex size-5 shrink-0 items-center justify-center rounded-full bg-white shadow-sm">
             <svg
-              className={`origin-center transform fill-gray-400 transition duration-200 ease-out ${accordionOpen && "!rotate-180"}`}
+              className={`origin-center fill-gray-400 transition duration-200 ease-out${accordionOpen && "!rotate-180"}`}
               xmlns="http://www.w3.org/2000/svg"
               width={10}
               height={6}
